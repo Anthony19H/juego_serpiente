@@ -14,7 +14,7 @@
     ctx.moveTo(x, 0);
     ctx.lineTo(x, canvas.height);
     ctx.stroke();
-    await new Promise(resolve => setTimeout(resolve, 500));
+    //await new Promise(resolve => setTimeout(resolve, 500));
   }
  
   for (let y = 0; y <= canvas.height; y += TAMANIO_CELDA) {
@@ -22,25 +22,20 @@
     ctx.moveTo(0, y);
     ctx.lineTo(canvas.width, y);
     ctx.stroke();
-    await new Promise(resolve => setTimeout(resolve, 500));
+    //await new Promise(resolve => setTimeout(resolve, 500));
   }
 }
-    function dibujarTablero2(){
-      for(let i = 0; i<canvas.width;i+=TAMANIO_CELDA){
-        ctx.strokeStyle = "pink";
-        ctx.beginPath();//empieza a dibujar el canva
-        ctx.moveTo(i,0);//donde empiza a dibujar
-        ctx.lineTo(i,canvas.height);//hasta donde dibujar
-        ctx.stroke();//pinta contorno
-      }
-      for(let i =0;i<canvas.height;i+=TAMANIO_CELDA){
-        ctx.strokeStyle = "pink";
-        ctx.beginPath();//empieza a dibujar el canva
-        ctx.moveTo(0,i);//donde empiza a dibujar
-        ctx.lineTo(canvas.width,i);//hasta donde dibujar
-        ctx.stroke();//pinta contorno
-      }
-    }
+
+function pintarParte(lineaX,lineaY){
+
+  let valorX = lineaX * TAMANIO_CELDA;
+  let valorY = lineaY * TAMANIO_CELDA;
+  ctx.fillStyle ="red"
+  ctx.fillRect(valorX,valorY,TAMANIO_CELDA,TAMANIO_CELDA);
+  ctx.strekeStyle ="blue";
+  ctx.strokeRect(valorX,valorY,TAMANIO_CELDA,TAMANIO_CELDA)
+}
+ 
     // Primera pintura del juego al cargar la página
     dibujarTodo();
 
@@ -55,6 +50,13 @@
     function dibujarTodo() {
       limpiarCanvas();
       dibujarTablero();
+      pintarParte(5,5);
+      pintarParte(10,2);
+      pintarParte((canvas.width-TAMANIO_CELDA)/25, (canvas.height-TAMANIO_CELDA)/25);
+      pintarParte(7,(canvas.height-TAMANIO_CELDA)/25);
+      pintarParte(0, (canvas.height-TAMANIO_CELDA)/25);
+      pintarParte(0, 10);
+      pintarParte((canvas.width-TAMANIO_CELDA)/25,0)
     }
 
 
