@@ -5,14 +5,26 @@
 
     const TAMANIO_CELDA =25;
 
-    function dibujarTablero(){
-      ctx.strokeStyle = "pink";
-      ctx.beginPath();//empieza a dibujar el canva
-      ctx.moveTo(0,0);//donde empiza a dibujar
-      ctx.lineTo(100,100);//hasta donde dibujar
-      ctx.stroke();//pinta contorno
-    }
-
+   async function dibujarTablero() {
+  ctx.strokeStyle = "#d84ff3";
+  ctx.lineWidth = 1;
+ 
+  for (let x = 0; x <= canvas.width; x += TAMANIO_CELDA) {
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, canvas.height);
+    ctx.stroke();
+    await new Promise(resolve => setTimeout(resolve, 500));
+  }
+ 
+  for (let y = 0; y <= canvas.height; y += TAMANIO_CELDA) {
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(canvas.width, y);
+    ctx.stroke();
+    await new Promise(resolve => setTimeout(resolve, 500));
+  }
+}
     function dibujarTablero2(){
       for(let i = 0; i<canvas.width;i+=TAMANIO_CELDA){
         ctx.strokeStyle = "pink";
@@ -42,7 +54,7 @@
 
     function dibujarTodo() {
       limpiarCanvas();
-      dibujarTablero2();
+      dibujarTablero();
     }
 
 
