@@ -16,8 +16,9 @@
         let  elemento = SERPIENTE[i];
         if(i == 0 ){
           pintarParte(elemento.x,elemento.y,"yellow");
-        }
+        }else{
         pintarParte(elemento.x,elemento.y,"red");
+        }
       }
     }
 
@@ -48,7 +49,7 @@ function pintarParte(lineaX,lineaY,color){
 
   let valorX = lineaX * TAMANIO_CELDA;
   let valorY = lineaY * TAMANIO_CELDA;
-  ctx.fillStyle ="red"
+  ctx.fillStyle = color
   ctx.fillRect(valorX,valorY,TAMANIO_CELDA,TAMANIO_CELDA);
   ctx.strokeStyle ="blue";
   ctx.strokeRect(valorX,valorY,TAMANIO_CELDA,TAMANIO_CELDA)
